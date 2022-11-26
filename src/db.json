@@ -22,5 +22,11 @@
         "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/61HpQqVQ37L._SY355_.jpg",
         "difficultyLevel": 3,
         "details": "/details/5c3a68d9f78d6638ec8fdad7"
+    },
+    {
+        "name": "myCube",
+        "description": "first cube",
+        "imageUrl": "https://litb-cgis.rightinthebox.com/images/640x640/202103/bps/product/inc/eivgkj1615798055622.jpg",
+        "difficultyLevel": "4"
     }
 ]
