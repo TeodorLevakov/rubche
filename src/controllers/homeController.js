@@ -1,3 +1,3 @@
 exports.index = (req, res) => {
-    res.render('index.js');
+    res.render('index');
 }
