@@ -5,7 +5,7 @@ const cubesService = require('../services/cubeService');
 router.get('/', (req, res) => {
     let { search, from, to } = req.query;
 
-    let cubes = cubesService.getAll(search, from, to);
+    let cubes = cubesService.getAll(search, Number(from), Number(to));
     res.render('index', { cubes });
 });
 
