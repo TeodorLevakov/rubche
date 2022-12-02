@@ -16,5 +16,4 @@ app.set('views', './src/views');
 
 app.use(routes);
 
-
 app.listen(5000, () => console.log('server is on...'));
