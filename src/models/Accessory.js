@@ -21,10 +21,12 @@ const accessSchema = new mongoose.Schema({
         required: true,
         maxlength: 120
     },
-    cube: {
-        type: mongoose.Types.ObjectId,
-        ref: 'Cube'
-    }
+    cubes: [
+        {
+            type: mongoose.Types.ObjectId,
+            ref: 'Cube'
+        }
+    ]
 });
 
 const Accessory = mongoose.model('Accessory', accessSchema);

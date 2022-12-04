@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
+const Accessory = require('../models/Accessory.js');
 
 //const cubes = require('../db.json');
 const Cube = require('../models/Cube.js');
@@ -25,4 +26,19 @@ exports.getAll = async (search = '', fromInput, toInput) => {
 
     // return result;
 };
+
+exports.attachAccess = async (cubeId, accessId) => {
+    const cube = await Cube.findById(cubeId);
+    const accessory = await Accessory.findById(accessId);
+
+    console.log(accessory);
+    
+    cube.accessories.push(accessory);
+    accessory.cubes.push(cube);
+
+    await cube.save();
+    await accessory.save();
+
+    return cube;
+}
 
