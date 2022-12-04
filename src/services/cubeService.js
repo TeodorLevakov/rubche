@@ -18,15 +18,26 @@ exports.getOne = (id) => Cube.findById(id);
 exports.getOneDetailt = (id) => Cube.findById(id).populate('accessories');
 
 exports.getAll = async (search = '', fromInput, toInput) => {
+    let from = Number(fromInput) || 0;
+    let to = Number(toInput) || 6;
 
-    return await Cube.find().lean();
-    // let from = Number(fromInput) || 0;
-    // let to = Number(toInput) || 6;
+    let cubes = await Cube.find({ name: { $regex: new RegExp(search, 'i')}})
+        .where('difficultyLevel').lte(to).gte(from)
+        .lean();
+
+    // let cubes = await Cube.find(
+    //     {
+    //         name: { $regex: new RegExp(search, 'i')},
+    //         difficultyLevel: { $ant: [{ $gta: from}, { $lte: to}]}
+    //     })
+    // .lean();
+
+     
     // const result = cubes
     //     .filter(x => x.name.toLowerCase().includes(search.toLowerCase()))
     //     .filter(x => x.difficultyLevel >= from && x.difficultyLevel <= to);
 
-    // return result;
+    return cubes;
 };
 
 exports.attachAccess = async (cubeId, accessId) => {
