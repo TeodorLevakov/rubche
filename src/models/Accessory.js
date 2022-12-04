@@ -20,6 +20,10 @@ const accessSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxlength: 120
+    },
+    cube: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Cube'
     }
 });
 
