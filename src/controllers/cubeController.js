@@ -31,9 +31,14 @@ router.post('/create', (req, res) => {
 
 router.get('/details/:id', async (req, res) => {
     let cube = await cubeService.getOne(req.params.id).lean();
-    console.log(cube);
     
     res.render('details', {cube});
+});
+
+router.get('/:cubeId/attach', (req, res) => {
+
+
+    res.render('accessory/attach');
 });
 
 
