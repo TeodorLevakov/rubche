@@ -15,6 +15,8 @@ exports.create = (cube) => {
 
 exports.getOne = (id) => Cube.findById(id);
 
+exports.getOneDetailt = (id) => Cube.findById(id).populate('accessories');
+
 exports.getAll = async (search = '', fromInput, toInput) => {
 
     return await Cube.find().lean();
@@ -31,8 +33,6 @@ exports.attachAccess = async (cubeId, accessId) => {
     const cube = await Cube.findById(cubeId);
     const accessory = await Accessory.findById(accessId);
 
-    console.log(accessory);
-    
     cube.accessories.push(accessory);
     accessory.cubes.push(cube);
 
