@@ -12,8 +12,6 @@ router.post('/register', async (req, res) => {
 
     let createdUser = await authService.register(username, password, repeatPassword);
 
-    console.log(createdUser);
-
     if (createdUser) {
         res.redirect('/auth/login');
     } else {
@@ -26,8 +24,15 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
+    let token = await authService.login(req.body);
 
+    if (!token) {
+        return res.redirect('/404');
+    }
+
+    res.cookie('sessioN', token);
+    res.redirect('/');
 });
 
 
