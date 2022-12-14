@@ -13,6 +13,12 @@ exports.create = (cube) => {
     return Cube.create(cube);
 }
 
+exports.edit = (cubeId, cubeData) => {
+    return Cube.findByIdAndUpdate(cubeId, cubeData);
+}
+
+exports.delete = (cubeId) => Cube.findByIdAndDelete(cubeId);
+
 exports.getOne = (id) => Cube.findById(id);
 
 exports.getOneDetailt = (id) => Cube.findById(id).populate('accessories');

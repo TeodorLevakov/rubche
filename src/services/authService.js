@@ -2,10 +2,8 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
+const { saltRound, secret } = require('../config/constants.js');
 
-
-const saltRound = 10;
-const secret = 'prosto_neshto';
 
 exports.register = async (username, password, repeatPassword) => {
 
